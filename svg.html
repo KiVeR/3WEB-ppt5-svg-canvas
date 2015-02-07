@@ -14,7 +14,7 @@
         width: 100%;
         height: 600px;
     }
-    s|circle[type="eye"] {
+    s|circle[type="jowl"] {
         fill: red
     }
     s|circle[type="face"] {
@@ -32,22 +32,28 @@
     }
 </style>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <filter id="blur">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
-    </filter>
+<figure>
+    <svg xmlns:s="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+            </filter>
+        </defs>
+        <!-- Les joues -->
+        <circle cx="150" cy="350" r="60" type="jowl" filter="url(#blur)"/>
+        <circle cx="450" cy="350" r="60" type="jowl" filter="url(#blur)"/>
+        <!-- La tête -->
+        <circle cx="300" cy="300" r="300" type="face"/>
+        <!-- La bouche -->
+        <ellipse cx="300" cy="430" rx="40" ry="110"/>
+        <!-- Les yeux (gauche puis droite) -->
+        <polyline points="90,200 180,120 260,200" style="fill:none;stroke:black; stroke-width:2" />
+        <polyline points="340,200 430,120 510,200" style="fill:none;stroke:black; stroke-width:2" />
 
-    <circle cx="150" cy="350" r="60" type="eye" filter="url(#blur)"/>
-    <circle cx="450" cy="350" r="60" type="eye" filter="url(#blur)"/>
-    <circle cx="300" cy="300" r="300" type="face"/>
-    <ellipse cx="300" cy="430" rx="40" ry="110"/>
-    <line x1="90" y1="200" x2="180" y2="120"/>
-    <line x1="180" y1="120" x2="260" y2="200"/>
-    <line x1="340" y1="200" x2="430" y2="120"/>
-    <line x1="430" y1="120" x2="510" y2="200"/>
-    <text y="15">
-        <tspan dy="350" x="350">Youhoo!</tspan>
-    </text>
-</svg>
+        <text y="15">
+            <tspan y="350" x="350">Youhoo!</tspan>
+        </text>
+    </svg>  
+</figure>
 </body>
 </html>
